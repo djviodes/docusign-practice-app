@@ -3,6 +3,8 @@ const helmet = require("helmet");
 const morgan = require("morgan");
 const cors = require("cors");
 
+const eg001 = require("../eg001EmbeddedSigning");
+
 const authRouter = require("../auth/auth-router");
 const usersRouter = require("../users/user-router");
 
@@ -24,5 +26,7 @@ server.use(morgan("dev"));
 
 server.use("/auth", authRouter);
 server.use("/api/users", usersRouter);
+
+server.post("/eg001", eg001.createController);
 
 module.exports = server;
